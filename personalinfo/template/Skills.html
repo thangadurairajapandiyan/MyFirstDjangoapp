@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Skills</title>
+
+</head>
+<body>
+
+<br>
+<hr>
+<table>
+    <tr>
+        <th>Namr</th>
+        <th>Age</th>
+        <th>Skills</th>
+    </tr>
+{% for it in Personal%}
+<tr>
+    <td>{{ it.Name }}</td>
+    <td>{{it.Age}}</td>
+    <td>{{it.Skills}}</td>
+<td> <a href="{% url 'home'%}">link to edit</a></td>
+    </tr>
+    {% endfor %}
+   <tr><td> <a href="{% url 'home'%}">link to edit</a></td></tr>
+</table>
+<hr>
+<br>
+
+<form method="POST">
+    {% csrf_token %}
+<select name="clr">
+    <option selected disabled="true">--Select option---</option>
+    <option>blue</option>
+    <option>green</option>
+    <option>yellow</option>
+</select>
+<input type="submit" value="Submit">
+<hr/>
+    {% if message %}
+    {% for v in message%}
+    <h3> {{v}}</h3>
+    {% endfor %}
+    {% endif %}
+</form>
+</body>
+<center>
+    <br>
+    <br>
+    <a href ="{% url 'home' %}"> Home page</a>
+</center>
+</html>
